@@ -23,15 +23,19 @@ public class KafkaController {
     public ResponseEntity<String> createOrder(@RequestBody Orders order){
         System.out.println("----- Request received -----");
         orderProducer.sendOrder(order);
+        System.out.println("----- Order Published to orders topic -----");
+
+        Notification notification = Notification.builder()
+                .message("Order created")
+                .userId("User_001")
+                .build();
+
+        notificationProducer.sendNotification(notification);
+        System.out.println("----- Notification Published to notifications topic -----");
+
         return ResponseEntity.ok("Order created");
     }
 
-    @PostMapping("/notifications")
-    public ResponseEntity<String> publishNotification(@RequestBody Notification notification) {
-        System.out.println("----- Request received -----");
-        notificationProducer.sendNotification(notification);
-        return ResponseEntity.ok("Notification sent");
-    }
 
 
 }
