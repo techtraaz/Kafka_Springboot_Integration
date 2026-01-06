@@ -39,14 +39,14 @@ Ensure the following are installed:
 ## Kafka Setup (Local – Without Docker)
 
 ### Start ZooKeeper
-bin/zookeeper-server-start.sh config/zookeeper.properties
+`bin/zookeeper-server-start.sh config/zookeeper.properties`
 
 ### Start Kafka Broker
-bin/kafka-server-start.sh config/server.properties
+`bin/kafka-server-start.sh config/server.properties`
 
 ### Create Topics
-bin/kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
-bin/kafka-topics.sh --create --topic notifications --bootstrap-server localhost:9092 --partitions 2 --replication-factor 1
+`bin/kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1`
+`bin/kafka-topics.sh --create --topic notifications --bootstrap-server localhost:9092 --partitions 2 --replication-factor 1`
 
 
 
