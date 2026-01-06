@@ -21,12 +21,14 @@ public class KafkaController {
 
     @PostMapping("/order/create")
     public ResponseEntity<String> createOrder(@RequestBody Orders order){
+        System.out.println("----- Request received -----");
         orderProducer.sendOrder(order);
         return ResponseEntity.ok("Order created");
     }
 
     @PostMapping("/notifications")
     public ResponseEntity<String> publishNotification(@RequestBody Notification notification) {
+        System.out.println("----- Request received -----");
         notificationProducer.sendNotification(notification);
         return ResponseEntity.ok("Notification sent");
     }
